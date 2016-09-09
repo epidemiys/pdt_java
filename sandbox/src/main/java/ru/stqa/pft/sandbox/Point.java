@@ -5,10 +5,7 @@ package ru.stqa.pft.sandbox;
  */
 public class Point {
 
-  int p1 = 2;
-  int p2 = 4;
-
-  public static double distance(Point p1, Point p2){
-    int range = Math.sqrt(p1 );
+  double a = 2;
+  double b = 4;
   }
-}
+
