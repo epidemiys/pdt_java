@@ -4,12 +4,11 @@ public class MyFirstProgram {
 
   public static void main(String[] args) {
 
-    double size = 5;
-    System.out.println("Площадь квадрата со стороной " + size + " = " + area(size));
+    Square s = new Square(5);
+    System.out.println("Площадь квадрата со стороной " + s.l + " = " + area(s));
 
-    double a = 4;
-    double b = 2;
-    System.out.println("Площадь прямоугольника со сторонами " + a + " и " + b + " = " + area(a,b));
+    Rectangle e = new Rectangle(2 , 4);
+    System.out.println("Площадь прямоугольника со сторонами " + e.a + " и " + e.b + " = " + area(e));
 
     }
 
@@ -17,11 +16,11 @@ public class MyFirstProgram {
     System.out.println("Hello, " + somebody);
   }
 
-  public static double area (double len){
-    return len * len;
+  public static double area (Square s){
+    return s.l * s.l;
   }
 
-  public static double area (double a, double b){
-    return a * b;
+  public static double area (Rectangle one){
+    return one.a * one.b;
   }
 }
