@@ -11,7 +11,7 @@ public class SquareTests {
   @Test
 
   public void testAria(){
-    MyFirstProgram a = new MyFirstProgram(5);
-    Assert.assertEquals(a.area(), 25);
+    Square a = new Square(5);
+    Assert.assertEquals(MyFirstProgram.area(a), 25.0);
   }
 }
