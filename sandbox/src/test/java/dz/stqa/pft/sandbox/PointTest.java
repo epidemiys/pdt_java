@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
  * Created by aleksandr.petrov on 15.09.16.
  */
 public class PointTest {
-
   @Test
   //Проверка расстояния равного нулю
   public void testNull(){
@@ -17,7 +16,9 @@ public class PointTest {
   }
 
   @Test
-  //Проверка расстояния не равного нулю
+  /*Проверка расстояния не равного нулю
+  Вообще переменные типа double тестировать на точное сравнение вероятно не достаточно корректно, в рамках данного задания предлагаю считать, что это ок
+   */
   public void testNonNull(){
     Point a = new Point(1, 1);
     Point b = new Point(2, 2);
