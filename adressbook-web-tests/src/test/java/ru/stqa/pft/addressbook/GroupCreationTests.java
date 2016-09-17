@@ -1,3 +1,5 @@
+package ru.stqa.pft.addressbook;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -7,7 +9,8 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class testGroupCreation {
+public class GroupCreationTests
+{
     FirefoxDriver wd;
 
     @BeforeMethod
