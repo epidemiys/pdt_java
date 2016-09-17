@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
  */
 public class PointTest {
   @Test
-  //Проверка расстояния равного нулю
+  /*Проверка расстояния равного нулю
+   */
   public void testNull(){
     Point a = new Point(0, 0);
     Point b = new Point(0, 0);
@@ -26,7 +27,8 @@ public class PointTest {
   }
 
   @Test
-  //Проверка того, что значение не равно корректному. Проверка бред, просто потрогал новый метод.
+  /*Проверка того, что значение не равно корректному. Проверка бред, просто потрогал новый метод.
+   */
   public void testPo(){
     Point a = new Point(1, 1);
     Point b = new Point(2, 2);
