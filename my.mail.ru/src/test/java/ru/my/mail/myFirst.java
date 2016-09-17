@@ -7,17 +7,13 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class MyFirstTest {
+public class myFirst {
     FirefoxDriver wd;
     
     @BeforeMethod
     public void setUp() throws Exception {
         wd = new FirefoxDriver();
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-    }
-    
-    @Test
-    public void MyFirstTest() {
         wd.get("https://m.my.mail.ru/cgi-bin/login?page=https%3A%2F%2Fm.my.mail.ru%2F");
         wd.findElement(By.name("Login")).click();
         wd.findElement(By.name("Login")).clear();
@@ -26,6 +22,10 @@ public class MyFirstTest {
         wd.findElement(By.name("Password")).clear();
         wd.findElement(By.name("Password")).sendKeys("Mytesting");
         wd.findElement(By.xpath("//div[@class='heightContent']/form/div[3]/input")).click();
+    }
+    
+    @Test
+    public void MyFirstTest() {
         wd.findElement(By.xpath(".//*[@id='leftmenu']/div[2]/a/span")).click();
         wd.findElement(By.cssSelector("a.profile-menu__tile.m-video")).click();
     }
