@@ -5,6 +5,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/adressbook-web-tests.iml" filepath="$PROJECT_DIR$/.idea/modules/adressbook-web-tests.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/adressbook-web-tests_main.iml" filepath="$PROJECT_DIR$/.idea/modules/adressbook-web-tests_main.iml" group="adressbook-web-tests" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/adressbook-web-tests_test.iml" filepath="$PROJECT_DIR$/.idea/modules/adressbook-web-tests_test.iml" group="adressbook-web-tests" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my.mail.ru.iml" filepath="$PROJECT_DIR$/.idea/modules/my.mail.ru.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my.mail.ru_main.iml" filepath="$PROJECT_DIR$/.idea/modules/my.mail.ru_main.iml" group="my.mail.ru" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/my.mail.ru_test.iml" filepath="$PROJECT_DIR$/.idea/modules/my.mail.ru_test.iml" group="my.mail.ru" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox_main.iml" group="sandbox" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/sandbox_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sandbox_test.iml" group="sandbox" />

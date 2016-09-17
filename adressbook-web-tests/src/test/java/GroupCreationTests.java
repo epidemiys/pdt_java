@@ -7,9 +7,9 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-public class GroupCreationTests {
+public class testGroupCreation {
     FirefoxDriver wd;
-    
+
     @BeforeMethod
     public void setUp() throws Exception {
         wd = new FirefoxDriver();
@@ -40,7 +40,8 @@ public class GroupCreationTests {
         wd.findElement(By.name("submit")).click();
         wd.findElement(By.linkText("group page")).click();
     }
-    
+
+
     @AfterMethod
     public void tearDown() {
         wd.quit();
