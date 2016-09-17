@@ -25,18 +25,18 @@ public class testGroupCreation {
     }
     
     @Test
-    public void testGroupCreation() {
+    public void testGroupCreation(String name, String header, String footer) {
         wd.findElement(By.linkText("groups")).click();
         wd.findElement(By.name("new")).click();
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys("1234");
+        wd.findElement(By.name("group_name")).sendKeys(name);
         wd.findElement(By.name("group_header")).click();
         wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys("header");
+        wd.findElement(By.name("group_header")).sendKeys(header);
         wd.findElement(By.name("group_footer")).click();
         wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys("footer");
+        wd.findElement(By.name("group_footer")).sendKeys(footer);
         wd.findElement(By.name("submit")).click();
         wd.findElement(By.linkText("group page")).click();
     }
