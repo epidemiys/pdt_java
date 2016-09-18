@@ -9,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class SessionHealper extends HelperBase {
 
     public SessionHealper(FirefoxDriver wd) {
-            super(wd);
+        super(wd);
     }
 
     public void login(String username, String password) {

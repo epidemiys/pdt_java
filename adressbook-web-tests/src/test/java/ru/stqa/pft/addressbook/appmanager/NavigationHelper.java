@@ -15,4 +15,16 @@ public class NavigationHelper extends HelperBase {
     public void goToGroupPage() {
         click(By.linkText("groups"));
     }
+
+    public void goToContactPage() {
+        click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
+    }
+
+    public void returnToHomePage() {
+        click(By.xpath("//*[@id='content']/div/i/a[2]"));
+    }
+
+    public void goToHomePage() {
+        click(By.name("home"));
+    }
 }
