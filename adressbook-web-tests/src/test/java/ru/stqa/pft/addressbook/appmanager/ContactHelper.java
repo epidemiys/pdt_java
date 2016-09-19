@@ -21,7 +21,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("mobile"), contactData.getMobile());
     }
 
-    public void submitContactForm() {
+    public void submitContactCreationForm() {
         click(By.name("submit"));
     }
 
@@ -39,5 +39,9 @@ public class ContactHelper extends HelperBase {
 
     public void submitDeletionForm() {
         wd.switchTo().alert().accept();
+    }
+
+    public void submitContactModificationForm() {
+        click(By.name("update"));
     }
 }

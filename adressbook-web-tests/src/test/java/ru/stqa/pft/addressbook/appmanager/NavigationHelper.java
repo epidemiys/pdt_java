@@ -20,11 +20,15 @@ public class NavigationHelper extends HelperBase {
         click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
     }
 
-    public void returnToHomePage() {
-        click(By.xpath("//*[@id='content']/div/i/a[2]"));
+    public void returnFromModificationPage() {
+        click(By.xpath("//*[@id='content']/div/i/a"));
     }
 
     public void goToHomePage() {
-        click(By.name("home"));
+        click(By.linkText("home"));
+    }
+
+    public void returnFromCreationPage() {
+        click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
     }
 }
