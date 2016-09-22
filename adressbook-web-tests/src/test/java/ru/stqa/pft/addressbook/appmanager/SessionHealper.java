@@ -1,6 +1,7 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 /**
@@ -8,7 +9,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
  */
 public class SessionHealper extends HelperBase {
 
-    public SessionHealper(FirefoxDriver wd) {
+    public SessionHealper(WebDriver wd) {
         super(wd);
     }
 
