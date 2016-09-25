@@ -23,10 +23,20 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void goToContactPage() {
+        if(isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+                && isElementPresent(By.name("submit"))) {
+            return;
+            }
         click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
     }
 
     public void returnFromModificationPage() {
+        if(isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Groups")
+                && isElementPresent(By.name("new"))){
+            return;
+        }
         click(By.xpath("//*[@id='content']/div/i/a"));
     }
 
@@ -38,6 +48,13 @@ public class NavigationHelper extends HelperBase {
     }
 
     public void returnFromCreationPage() {
+        /*
+        вообще с этой странички происходит редирект, но в учебных целях поедлагаю считать, что его нету. Если его нету,
+        проверка будет полезной.
+         */
+        if(isElementPresent(By.id("maintable"))){
+            return;
+        }
         click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
     }
 }

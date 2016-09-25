@@ -57,4 +57,26 @@ public class ContactHelper extends HelperBase {
     public void submitContactModificationForm() {
         click(By.name("update"));
     }
+
+    public void createContact(ContactData contactData) {
+        fillContactForm(contactData, true);
+        submitContactCreationForm();
+        returnFromCreationPage();
+    }
+
+    public void returnFromCreationPage() {
+        /*
+        вообще с этой странички происходит редирект, но в учебных целях поедлагаю считать, что его нету. Если его нету,
+        проверка будет полезной.
+         */
+        if(isElementPresent(By.id("maintable"))){
+            return;
+        }
+        click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
+    }
+
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
