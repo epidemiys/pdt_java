@@ -59,9 +59,20 @@ public class ContactHelper extends HelperBase {
     }
 
     public void createContact(ContactData contactData) {
+        goToContactPage();
         fillContactForm(contactData, true);
         submitContactCreationForm();
         returnFromCreationPage();
+    }
+
+    public void goToContactPage() {
+        //удалить
+        if(isElementPresent(By.tagName("h1"))
+                && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
+                && isElementPresent(By.name("submit"))) {
+            return;
+        }
+        click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
     }
 
     public void returnFromCreationPage() {
@@ -72,7 +83,7 @@ public class ContactHelper extends HelperBase {
         if(isElementPresent(By.id("maintable"))){
             return;
         }
-        click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
+        click(By.xpath(".//*[@id='nav']/ul/li[1]/a"));
     }
 
 
