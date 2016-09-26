@@ -13,6 +13,8 @@ import ru.stqa.pft.addressbook.model.ContactData;
  */
 public class ContactHelper extends HelperBase {
 
+    NavigationHelper navi = new NavigationHelper(wd);
+
     public ContactHelper(WebDriver wd) {
         super(wd);
     }
@@ -59,33 +61,11 @@ public class ContactHelper extends HelperBase {
     }
 
     public void createContact(ContactData contactData) {
-        goToContactPage();
+        navi.goToContactPage();
         fillContactForm(contactData, true);
         submitContactCreationForm();
-        returnFromCreationPage();
+        navi.returnFromCreationPage();
     }
-
-    public void goToContactPage() {
-        //удалить
-        if(isElementPresent(By.tagName("h1"))
-                && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
-                && isElementPresent(By.name("submit"))) {
-            return;
-        }
-        click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
-    }
-
-    public void returnFromCreationPage() {
-        /*
-        вообще с этой странички происходит редирект, но в учебных целях поедлагаю считать, что его нету. Если его нету,
-        проверка будет полезной.
-         */
-        if(isElementPresent(By.id("maintable"))){
-            return;
-        }
-        click(By.xpath(".//*[@id='nav']/ul/li[1]/a"));
-    }
-
 
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
