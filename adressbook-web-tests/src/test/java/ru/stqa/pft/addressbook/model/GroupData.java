@@ -8,17 +8,17 @@ public class GroupData {
 
 
     public GroupData(String id, String name, String header, String footer) {
+        this.id = id;
         this.name = name;
         this.header = header;
         this.footer = footer;
-        this.id = id;
     }
 
     public GroupData(String name, String header, String footer) {
+        this.id = null;
         this.name = name;
         this.header = header;
         this.footer = footer;
-        this.id = null;
     }
 
     @Override
