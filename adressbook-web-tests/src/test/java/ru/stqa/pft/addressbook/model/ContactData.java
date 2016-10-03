@@ -49,10 +49,6 @@ public class ContactData {
         return mobile;
     }
 
-    public String getGroup() {
-        return group;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -70,6 +66,10 @@ public class ContactData {
         int result = firstname != null ? firstname.hashCode() : 0;
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
+    }
+
+    public String getGroup() {
+        return group;
     }
 
     public int getId() {
