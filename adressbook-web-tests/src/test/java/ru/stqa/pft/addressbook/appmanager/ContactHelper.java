@@ -90,7 +90,7 @@ public class ContactHelper extends HelperBase {
                     .withFirstname(firstname)
                     .withLastname(lastname)
                     .withGroup("test1");
-            
+
             contacts.add(contact);
         }
         return contacts;
