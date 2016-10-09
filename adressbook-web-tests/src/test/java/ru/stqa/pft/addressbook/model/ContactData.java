@@ -1,33 +1,13 @@
 package ru.stqa.pft.addressbook.model;
 
 public class ContactData {
-    private int id;
-    private final String firstname;
-    private final String lastname;
-    private final String address;
-    private final String email;
-    private final String mobile;
+    private int id = Integer.MAX_VALUE;
+    private String firstname;
+    private String lastname;
+    private String address;
+    private String email;
+    private String mobile;
     private String group;
-
-    public ContactData(int id, String firstname, String lastname, String address, String email, String mobile, String group) {
-        this.id = id;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.address = address;
-        this.email = email;
-        this.mobile = mobile;
-        this.group = group;
-    }
-
-    public ContactData(String firstname, String lastname, String address, String email, String mobile, String group) {
-        this.id = Integer.MAX_VALUE;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.address = address;
-        this.email = email;
-        this.mobile = mobile;
-        this.group = group;
-    }
 
     public String getFirstname() {
         return firstname;
@@ -49,6 +29,49 @@ public class ContactData {
         return mobile;
     }
 
+    public String getGroup() {
+        return group;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;
+    }
+
+    public ContactData withFirstname(String firstname) {
+        this.firstname = firstname;
+        return this;
+    }
+
+    public ContactData withLastname(String lastname) {
+        this.lastname = lastname;
+        return this;
+    }
+
+    public ContactData setAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withMobile(String mobile) {
+        this.mobile = mobile;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -67,13 +90,4 @@ public class ContactData {
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         return result;
     }
-
-    public String getGroup() {
-        return group;
-    }
-
-    public int getId() {
-        return id;
-    }
-
 }

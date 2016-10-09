@@ -15,7 +15,11 @@ public class ContactCreationTests extends TestBase {
     @Test
     public void testContactCreation(){
         List<ContactData> before = app.contact().list();
-        ContactData contact = new ContactData("Петров", "Александр", null, null, null, "test1");
+        ContactData contact = new ContactData()
+                .withLastname("Петров")
+                .withFirstname("Александр")
+                .withGroup("test1");
+
         app.goTo().contact();
         app.contact().fillForm((contact), true);
         app.contact().submitCreation();
