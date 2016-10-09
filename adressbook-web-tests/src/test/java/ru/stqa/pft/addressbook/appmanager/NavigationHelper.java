@@ -22,7 +22,7 @@ public class NavigationHelper extends HelperBase {
         click(By.linkText("groups"));
     }
 
-    public void goToContactPage() {
+    public void contact() {
         if(isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Edit / add address book entry")
                 && isElementPresent(By.name("submit"))) {
@@ -31,7 +31,7 @@ public class NavigationHelper extends HelperBase {
         click(By.xpath("//*[@id='nav']/ul/li[2]/a"));
     }
 
-    public void returnFromModificationPage() {
+    public void homePageFromModification() {
         if(isElementPresent(By.tagName("h1"))
                 && wd.findElement(By.tagName("h1")).getText().equals("Groups")
                 && isElementPresent(By.name("new"))){
@@ -40,14 +40,14 @@ public class NavigationHelper extends HelperBase {
         click(By.xpath("//*[@id='content']/div/i/a"));
     }
 
-    public void goToHomePage() {
+    public void homePage() {
         if(isElementPresent(By.id("maintable"))){
             return;
         }
         click(By.linkText("home"));
     }
 
-    public void returnFromCreationPage() {
+    public void contactPage() {
         /*
         вообще с этой странички происходит редирект, но в учебных целях поедлагаю считать, что его нету. Если его нету,
         проверка будет полезной.

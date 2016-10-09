@@ -1,14 +1,11 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +21,7 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
-    public void fillContactForm(ContactData contactData, boolean creation) {
+    public void fillForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstname());
         type(By.name("lastname"), contactData.getLastname());
         type(By.name("address"), contactData.getAddress());
@@ -41,7 +38,7 @@ public class ContactHelper extends HelperBase {
         }
     }
 
-    public void submitContactCreationForm() {
+    public void submitCreation() {
         click(By.name("submit"));
     }
 
@@ -66,10 +63,10 @@ public class ContactHelper extends HelperBase {
     }
 
     public void createContact(ContactData contactData) {
-        navi.goToContactPage();
-        fillContactForm(contactData, true);
-        submitContactCreationForm();
-        navi.returnFromCreationPage();
+        navi.contact();
+        fillForm(contactData, true);
+        submitCreation();
+        navi.contactPage();
     }
 
     public boolean isThereAContact() {
@@ -80,7 +77,7 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<ContactData> getContactList() {
+    public List<ContactData> list() {
         List<ContactData> contacts = new ArrayList<>();
         List<WebElement> rows = wd.findElements(By.name("entry"));
         for (WebElement row : rows) {
@@ -97,7 +94,13 @@ public class ContactHelper extends HelperBase {
     public void modifyContact(int index, ContactData contact) {
         selectContact(index);
         initContactModification(index);
-        fillContactForm(contact, false);
+        fillForm(contact, false);
         submitContactModificationForm();
+    }
+
+    public void delete(int index) {
+        selectContact(index);
+        initContactDeletion();
+        submitDeletionForm();
     }
 }
