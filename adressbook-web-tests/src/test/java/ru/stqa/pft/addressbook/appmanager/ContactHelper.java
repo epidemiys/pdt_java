@@ -44,10 +44,6 @@ public class ContactHelper extends HelperBase {
         click(By.name("submit"));
     }
 
-    public void selectContact(int index) {
-        wd.findElements(By.name("selected[]")).get(index).click();
-    }
-
     public void selectContactById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
@@ -85,25 +81,6 @@ public class ContactHelper extends HelperBase {
         return wd.findElements(By.name("selected[]")).size();
     }
 
-    public List<ContactData> list() {
-        List<ContactData> contacts = new ArrayList<>();
-        List<WebElement> rows = wd.findElements(By.name("entry"));
-        for (WebElement row : rows) {
-            List<WebElement> cells = row.findElements(By.tagName("td"));
-            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
-            String lastname = cells.get(1).getText();
-            String firstname = cells.get(2).getText();
-            ContactData contact = new ContactData()
-                    .withId(id)
-                    .withFirstname(firstname)
-                    .withLastname(lastname)
-                    .withGroup("test1");
-
-            contacts.add(contact);
-        }
-        return contacts;
-    }
-
     public Set<ContactData> all() {
         Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> rows = wd.findElements(By.name("entry"));
@@ -128,12 +105,6 @@ public class ContactHelper extends HelperBase {
         initContactModification(contact.getId());
         fillForm(contact, false);
         submitContactModificationForm();
-    }
-
-    public void delete(int index) {
-        selectContact(index);
-        initContactDeletion();
-        submitDeletionForm();
     }
 
     public void delete(ContactData сontact) {
