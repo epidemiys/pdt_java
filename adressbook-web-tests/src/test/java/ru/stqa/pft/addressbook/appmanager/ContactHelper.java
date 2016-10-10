@@ -8,7 +8,9 @@ import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by aleksandr.petrov on 18.09.16.
@@ -44,6 +46,10 @@ public class ContactHelper extends HelperBase {
 
     public void selectContact(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
+    }
+
+    public void selectContactById(int id) {
+        wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
 
     public void initContactModification(int index) {
@@ -96,15 +102,40 @@ public class ContactHelper extends HelperBase {
         return contacts;
     }
 
-    public void modifyContact(int index, ContactData contact) {
-        selectContact(index);
-        initContactModification(index);
+    public Set<ContactData> all() {
+        Set<ContactData> contacts = new HashSet<ContactData>();
+        List<WebElement> rows = wd.findElements(By.name("entry"));
+        for (WebElement row : rows) {
+            List<WebElement> cells = row.findElements(By.tagName("td"));
+            int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
+            String lastname = cells.get(1).getText();
+            String firstname = cells.get(2).getText();
+            ContactData contact = new ContactData()
+                    .withId(id)
+                    .withFirstname(firstname)
+                    .withLastname(lastname)
+                    .withGroup("test1");
+
+            contacts.add(contact);
+        }
+        return contacts;
+    }
+
+    public void modifyContact(ContactData contact) {
+        selectContactById(contact.getId());
+        initContactModification(contact.getId());
         fillForm(contact, false);
         submitContactModificationForm();
     }
 
     public void delete(int index) {
         selectContact(index);
+        initContactDeletion();
+        submitDeletionForm();
+    }
+
+    public void delete(ContactData сontact) {
+        selectContactById(сontact.getId());
         initContactDeletion();
         submitDeletionForm();
     }
