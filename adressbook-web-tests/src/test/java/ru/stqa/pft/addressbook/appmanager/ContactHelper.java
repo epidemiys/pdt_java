@@ -64,23 +64,33 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    public void createContact(ContactData contactData) {
+    public void create(ContactData contactData) {
         navi.contact();
         fillForm(contactData, true);
         submitCreation();
+        contactCache = null;
         navi.contactPage();
     }
 
-    public boolean isThereAContact() {
-        return isElementPresent(By.name("selected[]"));
+    public void modifyContact(ContactData contact) {
+        selectContactById(contact.getId());
+        initContactModification(contact.getId());
+        fillForm(contact, false);
+        submitContactModificationForm();
+        contactCache = null;
     }
 
-    public int getContactCount() {
-        return wd.findElements(By.name("selected[]")).size();
+    public void delete(ContactData сontact) {
+        selectContactById(сontact.getId());
+        initContactDeletion();
+        submitDeletionForm();
+        contactCache = null;
     }
+
+    private Contacts contactCache = null;
 
     public Contacts all() {
-        Contacts contacts = new Contacts();
+        contactCache = new Contacts();
         List<WebElement> rows = wd.findElements(By.name("entry"));
         for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
@@ -93,21 +103,16 @@ public class ContactHelper extends HelperBase {
                     .withLastname(lastname)
                     .withGroup("test1");
 
-            contacts.add(contact);
+            contactCache.add(contact);
         }
-        return contacts;
+        return new Contacts(contactCache);
     }
 
-    public void modifyContact(ContactData contact) {
-        selectContactById(contact.getId());
-        initContactModification(contact.getId());
-        fillForm(contact, false);
-        submitContactModificationForm();
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
     }
 
-    public void delete(ContactData сontact) {
-        selectContactById(сontact.getId());
-        initContactDeletion();
-        submitDeletionForm();
+    public int getContactCount() {
+        return wd.findElements(By.name("selected[]")).size();
     }
 }
