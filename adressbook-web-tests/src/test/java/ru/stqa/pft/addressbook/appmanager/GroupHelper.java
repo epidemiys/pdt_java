@@ -29,6 +29,7 @@ public class GroupHelper extends HelperBase {
 
     public void submitGroupCreation() {
         click(By.name("submit"));
+        groupCache = null;
     }
 
     public void fillGroupForm(GroupData groupData) {
