@@ -31,11 +31,11 @@ public class ContactCreationTests extends TestBase {
                 before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
     }
 
-    @Test (enabled = false)
+    @Test
     public void testBedContactCreation(){
         Contacts before = app.contact().all();
         ContactData contact = new ContactData()
-                .withLastname("Петров")
+                .withLastname("Петров'")
                 .withFirstname("Александр")
                 .withGroup("test1");
 
@@ -46,7 +46,6 @@ public class ContactCreationTests extends TestBase {
 
         assertThat(app.contact().count(), equalTo(before.size()));
         Contacts after = app.contact().all();
-        assertThat(after, equalTo(
-                before.withAdded(contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+        assertThat(after, equalTo(before));
     }
 }
