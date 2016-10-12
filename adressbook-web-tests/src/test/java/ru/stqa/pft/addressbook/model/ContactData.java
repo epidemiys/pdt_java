@@ -25,11 +25,11 @@ public class ContactData {
         return address;
     }
 
-    public String getHome() {
+    public String getHomePhone() {
         return home;
     }
 
-    public String getWork() {
+    public String getWorkPhone() {
         return work;
     }
 
@@ -37,7 +37,7 @@ public class ContactData {
         return email;
     }
 
-    public String getMobile() {
+    public String getMobilePhone() {
         return mobile;
     }
 
