@@ -17,15 +17,19 @@ public class ContactPhoneTests extends TestBase {
         ContactData contact = app.contact().all().iterator().next();
         ContactData contactInfoFormEditForm = app.contact().infoFormEditForm(contact);
 
-        assertThat(contact.getHomePhone(), equalTo(cleaned(contactInfoFormEditForm.getHomePhone())));
-        assertThat(contact.getWorkPhone(), equalTo(cleaned(contactInfoFormEditForm.getWorkPhone())));
-        assertThat(contact.getMobilePhone(), equalTo(cleaned(contactInfoFormEditForm.getMobilePhone())));
-        assertThat(contact.getAddress(), equalTo(contactInfoFormEditForm.getAddress()));
-        assertThat(contact.getEmail(), equalTo(contactInfoFormEditForm.getEmail()));
+        assertThat(contact.getHomePhone(), equalTo(cleanedPhone(contactInfoFormEditForm.getHomePhone())));
+        assertThat(contact.getWorkPhone(), equalTo(cleanedPhone(contactInfoFormEditForm.getWorkPhone())));
+        assertThat(contact.getMobilePhone(), equalTo(cleanedPhone(contactInfoFormEditForm.getMobilePhone())));
+        assertThat(contact.getAddress(), equalTo(cleanedText(contactInfoFormEditForm.getAddress())));
+        assertThat(contact.getEmail(), equalTo(cleanedText(contactInfoFormEditForm.getEmail())));
 
     }
 
-    public String cleaned (String phone) {
+    public String cleanedPhone (String phone) {
         return phone.replaceAll("\\s", "").replaceAll("[-()]" , "");
+    }
+
+    public String cleanedText (String text) {
+        return text.replaceAll("  ", "");
     }
 }
