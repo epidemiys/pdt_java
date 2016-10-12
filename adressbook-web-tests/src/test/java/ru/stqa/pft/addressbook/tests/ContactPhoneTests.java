@@ -20,9 +20,12 @@ public class ContactPhoneTests extends TestBase {
         assertThat(contact.getHomePhone(), equalTo(cleaned(contactInfoFormEditForm.getHomePhone())));
         assertThat(contact.getWorkPhone(), equalTo(cleaned(contactInfoFormEditForm.getWorkPhone())));
         assertThat(contact.getMobilePhone(), equalTo(cleaned(contactInfoFormEditForm.getMobilePhone())));
+        assertThat(contact.getAddress(), equalTo(cleaned(contactInfoFormEditForm.getAddress())));
+        assertThat(contact.getEmail(), equalTo(cleaned(contactInfoFormEditForm.getEmail())));
+
     }
 
     public String cleaned (String phone) {
-        return phone.replaceAll("\\s", "").replaceAll("[-()]" , "");
+        return phone.replaceAll("\\s", "").replaceAll("[-()]" , "").replaceAll(" ", "");
     }
 }

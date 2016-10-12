@@ -80,6 +80,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
     public ContactData withMobilePhone(String mobile) {
         this.mobile = mobile;
         return this;
