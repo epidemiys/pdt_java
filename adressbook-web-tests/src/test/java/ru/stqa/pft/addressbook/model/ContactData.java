@@ -15,6 +15,11 @@ public class ContactData {
     private String work;
     private String allPhones;
     private String allEmail;
+    private String allInfo;
+
+    public String getAllInfo() {
+        return allInfo;
+    }
 
     public String getAllPhones() {
         return allPhones;
@@ -106,6 +111,11 @@ public class ContactData {
 
     public ContactData withEmail(String email) {
         this.email = email;
+        return this;
+    }
+
+    public ContactData withAllInfo(String allInfo) {
+        this.allInfo = allInfo;
         return this;
     }
 
