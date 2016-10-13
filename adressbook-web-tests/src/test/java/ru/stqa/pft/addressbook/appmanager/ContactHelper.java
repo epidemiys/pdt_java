@@ -99,15 +99,13 @@ public class ContactHelper extends HelperBase {
             String firstname = cells.get(2).getText();
             String address = cells.get(3).getText();
             String email = cells.get(4).getText();
-            String [] phones = cells.get(5).getText().split("\n");
+            String allPhones = cells.get(5).getText();
             ContactData contact = new ContactData()
                     .withId(id)
                     .withFirstname(firstname)
                     .withLastname(lastname)
                     .withGroup("test1")
-                    .withHomePhone(phones[0])
-                    .withMobilePhone(phones[1])
-                    .withWorkPhone(phones[2])
+                    .withAllPhones(allPhones)
                     .withAddress(address)
                     .withEmail(email);
 
