@@ -60,7 +60,7 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation(ContactData contact){
         Contacts before = app.contact().all();
         app.goTo().contact();
-        app.contact().fillForm((contact), true);
+        app.contact().fillForm1(contact);
         app.contact().submitCreation();
         app.goTo().contactPage();
 

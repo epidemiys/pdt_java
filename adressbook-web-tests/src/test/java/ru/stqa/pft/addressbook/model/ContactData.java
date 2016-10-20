@@ -16,13 +16,13 @@ public class ContactData {
     private String firstname;
     @Expose
     private String lastname;
+    @Expose
     private String address;
     @Expose
     private String email;
     private String email2;
     private String email3;
     private String mobile;
-    @Expose
     private String group;
     private String home;
     private String work;

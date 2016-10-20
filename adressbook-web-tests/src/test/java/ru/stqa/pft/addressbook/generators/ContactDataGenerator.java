@@ -84,10 +84,10 @@ public class ContactDataGenerator {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++){
             contacts.add(new ContactData()
-                    .withFirstname(String.format("test %s", i))
-                    .withLastname(String.format("header %s", i))
-                    .withEmail(String.format("footer %s", i))
-                    .withGroup(String.format("test1")));
+                    .withFirstname(String.format("First%s", i))
+                    .withLastname(String.format("Last%s", i))
+                    .withEmail(String .format("testqaqa@mail.ru"))
+                    .withAddress(String.format("Улица Пушкина, дом Калатушкина")));
         }
         return contacts;
     }

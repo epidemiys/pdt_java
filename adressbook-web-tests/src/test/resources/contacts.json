@@ -1,20 +1,20 @@
 [
   {
-    "firstname": "test 0",
-    "lastname": "header 0",
-    "email": "footer 0",
-    "group": "test1"
+    "firstname": "First0",
+    "lastname": "Last0",
+    "address": "Улица Пушкина, дом Калатушкина",
+    "email": "testqaqa@mail.ru"
   },
   {
-    "firstname": "test 1",
-    "lastname": "header 1",
-    "email": "footer 1",
-    "group": "test1"
+    "firstname": "First1",
+    "lastname": "Last1",
+    "address": "Улица Пушкина, дом Калатушкина",
+    "email": "testqaqa@mail.ru"
   },
   {
-    "firstname": "test 2",
-    "lastname": "header 2",
-    "email": "footer 2",
-    "group": "test1"
+    "firstname": "First2",
+    "lastname": "Last2",
+    "address": "Улица Пушкина, дом Калатушкина",
+    "email": "testqaqa@mail.ru"
   }
 ]
