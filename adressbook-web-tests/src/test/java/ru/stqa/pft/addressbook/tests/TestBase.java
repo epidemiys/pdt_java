@@ -5,6 +5,13 @@ import org.openqa.selenium.support.ui.SystemClock;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
+
+import java.util.stream.Collectors;
+
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
 /**
  * Created by aleksandr.petrov on 17.09.16.
@@ -24,4 +31,14 @@ public class TestBase {
         app.stop();
     }
 
+    public void verifyGroupListInUI() {
+        if(Boolean.getBoolean("verifyUI")){
+            Groups dbGroups = app.db().groups();
+            Groups uiGroups = app.group().all();
+            assertThat(uiGroups, equalTo(dbGroups.stream().map((g) -> new GroupData()
+                    .withId(g.getId())
+                    .withName(g.getName()))
+                    .collect(Collectors.toSet())));
+        }
+    }
 }
