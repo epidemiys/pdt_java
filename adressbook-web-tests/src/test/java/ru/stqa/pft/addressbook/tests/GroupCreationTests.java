@@ -21,22 +21,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class GroupCreationTests extends TestBase {
 
     @DataProvider
-    public Iterator<Object[]> validGroupsFromXml() throws IOException {
-        try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")))){
-            String xml = "";
-            String line = reader.readLine();
-            while (line != null){
-                xml += line;
-                line = reader.readLine();
-            }
-            XStream xstream = new XStream();
-            xstream.processAnnotations(GroupData.class);
-            List<GroupData> groups = (List<GroupData>) xstream.fromXML(xml);
-            return groups.stream().map((g) -> new Object [] {g}).collect(Collectors.toList()).iterator();
-        }
-    }
-
-    @DataProvider
     public Iterator<Object[]> validGroupsFromJson() throws IOException {
         try (BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.json")))){
             String json = "";
@@ -53,16 +37,13 @@ public class GroupCreationTests extends TestBase {
 
     @Test(dataProvider = "validGroupsFromJson")
     public void testGroupCreation(GroupData group) {
-            app.goTo().groupPage();
-            Groups before = app.group().all();
-            app.group().initGroupCreation();
-            app.group().fillGroupForm(group);
-            app.group().submitGroupCreation();
-            app.group().returnToGroupPage();
-            assertThat(app.group().count(), equalTo(before.size() + 1));
-            Groups after = app.group().all();
-            assertThat(after, equalTo(before.withAdded(
-                    group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
+        Groups before =app.db().groups();
+        app.goTo().groupPage();
+        app.group().create(group);
+        assertThat(app.group().count(), equalTo(before.size() + 1));
+        Groups after = app.db().groups();
+        assertThat(after, equalTo(
+                before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
         }
 
     @Test (enabled = false)
