@@ -29,53 +29,66 @@ public class ContactProfileInfo extends TestBase {
                 allPhones(contact),
                 allEmails(contact))
                 .filter((s) -> s != null && !s.equals(""))
-                .map(ContactProfileInfo::cleaned)
                 .collect(Collectors.joining("\n\n"));
     }
 
-    private String fullName(ContactData contact){
+    private String fullName(ContactData contact) {
         ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
-        return Stream.of(contactInfoFromEditForm.getFirstname(),contactInfoFromEditForm.getLastname())
+        return Stream.of(contactInfoFromEditForm.getFirstname(), contactInfoFromEditForm.getLastname())
                 .filter((s) -> s != null && !s.equals(""))
-                .map(ContactProfileInfo::cleaned)
+                .map(ContactProfileInfo::cleanedName)
                 .collect(Collectors.joining(" "));
     }
 
-    private String fullNameAndAddress(ContactData contact){
+    private String fullNameAndAddress(ContactData contact) {
         ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
         String r = Stream.of(fullName(contact), contactInfoFromEditForm.getAddress())
                 .filter((s) -> s != null && !s.equals(""))
-                .map(ContactProfileInfo::cleaned)
-                .collect(Collectors.joining("\n"));
+                .map(ContactProfileInfo::cleanedNameAndAddress)
+                .collect(Collectors.joining("\n\n"));
         return r;
     }
 
-    private String allPhones(ContactData contact){
+    private String allPhones(ContactData contact) {
         ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
         return Stream.of(
-                ("H: "+contactInfoFromEditForm.getHomePhone()),
-                ("M: "+ contactInfoFromEditForm.getMobilePhone()),
-                ("W: "+contactInfoFromEditForm.getWorkPhone()))
+                (contactInfoFromEditForm.getHomePhone()),
+                (contactInfoFromEditForm.getMobilePhone()),
+                (contactInfoFromEditForm.getWorkPhone()))
                 .filter((s) -> s != null && !s.equals(""))
-                .map(ContactProfileInfo::cleaned)
+                .map(ContactProfileInfo::cleanedPhones)
                 .collect(Collectors.joining("\n"));
     }
 
 
-    private String allEmails(ContactData contact){
+    private String allEmails(ContactData contact) {
         ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
         return Stream.of(
-                (contactInfoFromEditForm.getEmail()+" (www."+contactInfoFromEditForm.getEmail().substring(contactInfoFromEditForm.getEmail().lastIndexOf("@") +1)+")"),
-                (contactInfoFromEditForm.getEmail2()+" (www."+contactInfoFromEditForm.getEmail2().substring(contactInfoFromEditForm.getEmail2().lastIndexOf("@") +1)+")"),
-                (contactInfoFromEditForm.getEmail3()+" (www."+contactInfoFromEditForm.getEmail3().substring(contactInfoFromEditForm.getEmail3().lastIndexOf("@") +1)+")"))
+                (contactInfoFromEditForm.getEmail()),
+                (contactInfoFromEditForm.getEmail2()),
+                (contactInfoFromEditForm.getEmail3() ))
                 .filter((s) -> s != null && !s.equals(""))
-                .map(ContactProfileInfo::cleaned)
+                .map(ContactProfileInfo::cleanedEmails)
                 .collect(Collectors.joining("\n"));
     }
 
-    public static String cleaned(String details) {
+    public static String cleanedEmails(String details) {
         return details
-                .replaceAll("ru ", "ru ")
-                .replaceAll("\n", "\n\n");
+                .replaceAll("", "");
+    }
+
+    public static String cleanedPhones(String details) {
+        return details
+                .replaceAll("", "");
+    }
+
+    public static String cleanedNameAndAddress(String details) {
+        return details
+                .replaceAll("", "");
+    }
+
+    public static String cleanedName(String details) {
+        return details
+                .replaceAll("", "");
     }
 }
