@@ -74,7 +74,7 @@ public class ContactProfileInfo extends TestBase {
 
     public static String cleanedEmails(String details) {
         return details
-                .replaceAll("", "");
+                .replaceAll("test@mail.ru", "test@mail.ru (www.mail.ru)");
     }
 
     public static String cleanedPhones(String details) {
