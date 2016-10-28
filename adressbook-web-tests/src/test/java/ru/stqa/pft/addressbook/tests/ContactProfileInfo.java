@@ -75,15 +75,7 @@ public class ContactProfileInfo extends TestBase {
 
     public static String cleaned(String details) {
         return details
-                .replaceAll("[-()]", "")
-                .replaceAll("www.mail.ru", "")
-//                .replaceAll("H:", "")
-//                .replaceAll("M:", "")
-//                .replaceAll("W:", "")
-                .replaceAll("\n\n", "\n")
-//                .replaceFirst(" ", "\n")
-                .replaceAll("\n ", "\n")
-                .replaceAll("ru ", "ru")
-                .replaceAll("7 ", "7");
+                .replaceAll("ru ", "ru ")
+                .replaceAll("\n", "\n\n");
     }
 }

@@ -37,7 +37,7 @@ public class ContactModificationTests extends TestBase {
         ContactData modifiedContact = before.iterator().next();
         ContactData contact = new ContactData()
                 .withId(modifiedContact.getId())
-                .withLastname("Саша")
+                .withLastname("Александр")
                 .withFirstname("Петров")
                 .withAddress("Улица Пушкина")
                 .withHomePhone("89261112233")
