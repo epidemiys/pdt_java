@@ -52,7 +52,7 @@ public class GroupCreationTests extends TestBase {
         Groups before = app.group().all();
         app.group().initGroupCreation();
         GroupData group = new GroupData()
-                .withName("test2'");
+                .withName("test 1'");
         app.group().fillGroupForm(group);
         app.group().submitGroupCreation();
         app.group().returnToGroupPage();

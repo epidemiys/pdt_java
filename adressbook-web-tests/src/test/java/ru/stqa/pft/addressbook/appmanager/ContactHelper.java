@@ -114,7 +114,7 @@ public class ContactHelper extends HelperBase {
                     .withId(id)
                     .withFirstname(firstname)
                     .withLastname(lastname)
-                    //.withGroup("test1")
+                    //.withGroup("test 1")
                     .withAllPhones(allPhones)
                     .withAddress(address)
                     .withAllEmail(allEmail);

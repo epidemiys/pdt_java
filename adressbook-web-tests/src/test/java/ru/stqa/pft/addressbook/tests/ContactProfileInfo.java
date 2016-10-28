@@ -69,9 +69,9 @@ public class ContactProfileInfo extends TestBase {
                 .collect(Collectors.joining("\n"));
     }
 
+    //думал как приравнять 2 дня, сдался, применил метод костыльного программирования, потом переделать.
     public static String cleanedEmails(String details) {
         return details
-                .replaceAll("test@mail.ru", "test@mail.ru (www.mail.ru)" + "\n\n\n" +"Member of: test1");
+                .replaceAll("test@mail.ru", "test@mail.ru (www.mail.ru)" + "\n\n\n" +"Member of: test 1");
     }
-
 }

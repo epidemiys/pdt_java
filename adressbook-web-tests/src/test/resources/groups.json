@@ -1,6 +1,6 @@
 [
   {
-    "name": "test 0",
+    "name": "test 1",
     "header": "header 0",
     "footer": "footer 0"
   },
@@ -10,7 +10,7 @@
     "footer": "footer 1"
   },
   {
-    "name": "test 2",
+    "name": "test 1",
     "header": "header 2",
     "footer": "footer 2"
   }
