@@ -86,8 +86,8 @@ public class ContactDataGenerator {
             contacts.add(new ContactData()
                     .withFirstname(String.format("First%s", i))
                     .withLastname(String.format("Last%s", i))
-                    .withEmail(String .format("testqaqa@mail.ru"))
-                    .withAddress(String.format("Улица Пушкина, дом Калатушкина")));
+                    .withEmail(String .format("test@mail.ru"))
+                    .withAddress(String.format("Улица Пушкина")));
         }
         return contacts;
     }

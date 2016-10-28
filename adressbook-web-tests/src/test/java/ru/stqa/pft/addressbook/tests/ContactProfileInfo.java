@@ -36,7 +36,6 @@ public class ContactProfileInfo extends TestBase {
         ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
         return Stream.of(contactInfoFromEditForm.getFirstname(), contactInfoFromEditForm.getLastname())
                 .filter((s) -> s != null && !s.equals(""))
-                .map(ContactProfileInfo::cleanedName)
                 .collect(Collectors.joining(" "));
     }
 
@@ -44,7 +43,6 @@ public class ContactProfileInfo extends TestBase {
         ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
         String r = Stream.of(fullName(contact), contactInfoFromEditForm.getAddress())
                 .filter((s) -> s != null && !s.equals(""))
-                .map(ContactProfileInfo::cleanedNameAndAddress)
                 .collect(Collectors.joining("\n\n"));
         return r;
     }
@@ -56,7 +54,6 @@ public class ContactProfileInfo extends TestBase {
                 (contactInfoFromEditForm.getMobilePhone()),
                 (contactInfoFromEditForm.getWorkPhone()))
                 .filter((s) -> s != null && !s.equals(""))
-                .map(ContactProfileInfo::cleanedPhones)
                 .collect(Collectors.joining("\n"));
     }
 
@@ -74,21 +71,7 @@ public class ContactProfileInfo extends TestBase {
 
     public static String cleanedEmails(String details) {
         return details
-                .replaceAll("test@mail.ru", "test@mail.ru (www.mail.ru)");
+                .replaceAll("test@mail.ru", "test@mail.ru (www.mail.ru)" + "\n\n\n" +"Member of: test1");
     }
 
-    public static String cleanedPhones(String details) {
-        return details
-                .replaceAll("", "");
-    }
-
-    public static String cleanedNameAndAddress(String details) {
-        return details
-                .replaceAll("", "");
-    }
-
-    public static String cleanedName(String details) {
-        return details
-                .replaceAll("", "");
-    }
 }
