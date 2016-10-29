@@ -175,4 +175,24 @@ public class ContactHelper extends HelperBase {
         wd.navigate().back();
         return new ContactData().withDetails(details);
     }
+
+    public void addContactToGroup(ContactData contact) {
+        selectContactById(contact.getId());
+        selectGroup(contact);
+        submitContactAdditionToGroup();
+        goToCurrentGroupPage();
+    }
+
+    private void selectGroup(ContactData contactData) {
+        new Select(wd.findElement(By.name("to_group")))
+                .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+    }
+
+    public void submitContactAdditionToGroup() {
+        click(By.name("add"));
+    }
+
+    public void goToCurrentGroupPage(){
+        wd.findElement(By.xpath(".//*[@id='content']/div/i/a")).click();
+    }
 }
