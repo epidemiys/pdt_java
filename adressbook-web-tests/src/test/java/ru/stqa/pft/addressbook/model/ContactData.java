@@ -74,6 +74,10 @@ public class ContactData {
 
     private Set<GroupData> groups = new HashSet<GroupData>();
 
+    @Expose
+    @ManyToMany(mappedBy = "groups")
+    private Set<ContactData> contacts = new HashSet<ContactData>();
+
     public File getPhoto() {
         if (photo == null) {
             return null;
@@ -243,4 +247,5 @@ public class ContactData {
         groups.add(group);
         return this;
     }
+
 }
