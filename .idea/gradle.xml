@@ -5,17 +5,6 @@
       <GradleProjectSettings>
         <option name="createEmptyContentRootDirectories" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$USER_HOME$/Developer/m.my.mail.ru" />
-        <option name="modules">
-          <set>
-            <option value="$USER_HOME$/Developer/m.my.mail.ru" />
-          </set>
-        </option>
-        <option name="useAutoImport" value="true" />
-      </GradleProjectSettings>
-      <GradleProjectSettings>
-        <option name="createEmptyContentRootDirectories" value="true" />
-        <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/adressbook-web-tests" />
         <option name="modules">
           <set>
@@ -27,10 +16,10 @@
       <GradleProjectSettings>
         <option name="createEmptyContentRootDirectories" value="true" />
         <option name="distributionType" value="DEFAULT_WRAPPED" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/my.mail.ru" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/mantis-tests" />
         <option name="modules">
           <set>
-            <option value="$PROJECT_DIR$/my.mail.ru" />
+            <option value="$PROJECT_DIR$/mantis-tests" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />
