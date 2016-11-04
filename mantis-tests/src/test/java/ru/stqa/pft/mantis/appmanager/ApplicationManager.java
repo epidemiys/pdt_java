@@ -25,6 +25,7 @@ public class ApplicationManager {
     private String browser;
     private RegistrationHelper registrationHelper;
     private MailHelper mailHelper;
+    private NavigationHelper navigationHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -50,14 +51,6 @@ public class ApplicationManager {
         return properties.getProperty(key);
     }
 
-    public RegistrationHelper registration() {
-        if(registrationHelper == null) {
-            registrationHelper = new RegistrationHelper(this);
-        }
-        return registrationHelper;
-    }
-
-
     public WebDriver getDriver() {
         if (wd == null) {
             if (browser.equals(BrowserType.FIREFOX)) {
@@ -79,5 +72,19 @@ public class ApplicationManager {
         if(mailHelper == null){
             mailHelper = new MailHelper(this);
         } return mailHelper;
+    }
+
+    public RegistrationHelper registration() {
+        if(registrationHelper == null) {
+            registrationHelper = new RegistrationHelper(this);
+        }
+        return registrationHelper;
+    }
+
+    public NavigationHelper goTo() {
+        if(navigationHelper == null) {
+            navigationHelper = new NavigationHelper(this);
+        }
+        return navigationHelper;
     }
 }
