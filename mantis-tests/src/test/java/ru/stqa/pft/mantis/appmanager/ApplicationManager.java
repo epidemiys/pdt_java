@@ -25,7 +25,7 @@ public class ApplicationManager {
     private String browser;
     private RegistrationHelper registrationHelper;
     private MailHelper mailHelper;
-    private NavigationHelper navigationHelper;
+    private DbHelper db;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -38,7 +38,7 @@ public class ApplicationManager {
     }
 
     public void stop() {
-        if(wd != null){
+        if (wd != null) {
             wd.quit();
         }
     }
@@ -68,23 +68,25 @@ public class ApplicationManager {
         return wd;
     }
 
-    public MailHelper mail(){
-        if(mailHelper == null){
+    public MailHelper mail() {
+        if (mailHelper == null) {
             mailHelper = new MailHelper(this);
-        } return mailHelper;
+        }
+        return mailHelper;
     }
 
     public RegistrationHelper registration() {
-        if(registrationHelper == null) {
+        if (registrationHelper == null) {
             registrationHelper = new RegistrationHelper(this);
         }
         return registrationHelper;
     }
 
-    public NavigationHelper goTo() {
-        if(navigationHelper == null) {
-            navigationHelper = new NavigationHelper(this);
+    public DbHelper db() {
+        if (db == null) {
+            db = new DbHelper();
         }
-        return navigationHelper;
+        return db;
     }
+
 }
