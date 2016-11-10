@@ -24,35 +24,32 @@ public class SoapHelper {
         this.app = app;
     }
 
-    public Set<Project> getProjects() throws RemoteException, MalformedURLException, ServiceException {
-        MantisConnectPortType mc = getMantisConnect();
-        ProjectData[] projects = mc.mc_projects_get_user_accessible("administrator", "root");
-        return Arrays.asList(projects).stream().map((p) -> new Project()
-                .withId(p.getId().intValue())
-                .withName(p.getName()))
-                .collect(Collectors.toSet());
-    }
+   public Set<Project> getProjects() throws MalformedURLException, ServiceException, RemoteException {
+           MantisConnectPortType mc = getMantisConnect();
+           ProjectData[] projects = mc.mc_projects_get_user_accessible("administrator", "root");
+           return Arrays.asList(projects).stream()
+                           .map((p) -> new Project().withId(p.getId().intValue()).withName(p.getName()))
+                           .collect(Collectors.toSet());
+          }
 
-    private MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
-        return new MantisConnectLocator()
-                    .getMantisConnectPort(new URL("http://localhost/mantisbt-1.3.3/api/soap/mantisconnect.php"));
-        //перенести в конфигаруционный файл по 3 части
-    }
+           public MantisConnectPortType getMantisConnect() throws ServiceException, MalformedURLException {
+           return new MantisConnectLocator()
+                            .getMantisConnectPort(new URL("http://localhost/mantisbt-1.3.3/api/soap/mantisconnect.php"));
+          }
 
-    public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
-        MantisConnectPortType mc = getMantisConnect();
-        String[] categores = mc.mc_project_get_categories("administrator", "root", BigInteger.valueOf(issue.getProject().getId()));
-        IssueData issueData = new IssueData();
-        issueData.setSummary(issue.getSummary());
-        issueData.setDescription(issue.getDiscription());
-        issueData.setProject(new ObjectRef(BigInteger.valueOf(issue.getProject().getId()), issue.getProject().getName()));
-        issueData.setCategory(categores[0]);
-        BigInteger issueId = mc.mc_issue_add("administrator", "root", issueData);
-        IssueData createdIssueData = mc.mc_issue_get("administrator", "root", issueId);
-        return new Issue().withId(createdIssueData.getId().intValue())
-                .withSummary(createdIssueData.getSummary())
-                .withDiscription(createdIssueData.getDescription())
-                .withProject(new Project().withId(createdIssueData.getProject().getId().intValue())
-                        .withName(createdIssueData.getProject().getName()));
-    }
+           public Issue addIssue(Issue issue) throws MalformedURLException, ServiceException, RemoteException {
+            MantisConnectPortType mc = getMantisConnect();
+           String[] categories = mc.mc_project_get_categories("administrator", "root", BigInteger.valueOf(issue.getProject().getId()));
+            IssueData issueData = new IssueData();
+            issueData.setSummary(issue.getSummary());
+            issueData.setDescription(issue.getDiscription());
+            issueData.setProject(new ObjectRef(BigInteger.valueOf(issue.getProject().getId()), issue.getProject().getName()));
+            issueData.setCategory(categories[0]);
+           BigInteger issueId = mc.mc_issue_add("administrator", "root", issueData);
+           IssueData createdIssueData = mc.mc_issue_get("administrator", "root", issueId);
+           return new Issue().withId(createdIssueData.getId().intValue()).withSummary(createdIssueData.getSummary())
+                         .withDiscription(createdIssueData.getDescription()).withProject(new Project().withId(createdIssueData.getProject().getId().intValue())
+                                  .withName(createdIssueData.getProject().getName()));
+
+                 }
 }

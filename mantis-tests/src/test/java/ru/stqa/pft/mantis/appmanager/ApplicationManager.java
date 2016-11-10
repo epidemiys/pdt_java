@@ -26,7 +26,7 @@ public class ApplicationManager {
     private RegistrationHelper registrationHelper;
     private MailHelper mailHelper;
     private DbHelper db;
-    private SoapHelper soap;
+    private SoapHelper soapHelper;
 
     public ApplicationManager(String browser) {
         this.browser = browser;
@@ -91,10 +91,10 @@ public class ApplicationManager {
     }
 
     public SoapHelper soap() {
-        if (soap == null){
-            soap = new SoapHelper(this);
+        if (soapHelper == null){
+            soapHelper = new SoapHelper(this);
         }
-        return soap;
+        return soapHelper;
     }
 
 }
