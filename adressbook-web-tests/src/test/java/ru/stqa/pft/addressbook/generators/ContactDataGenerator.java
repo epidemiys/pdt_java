@@ -23,7 +23,7 @@ public class ContactDataGenerator {
     @Parameter(names = "-c", description = "Contact count")
     public int count;
 
-    @Parameter(names = "-f", description = "Target file")
+    @Parameter(names = "-f", description = "Data file")
     public String file;
 
     @Parameter(names = "-d", description = "Data format")
@@ -68,16 +68,17 @@ public class ContactDataGenerator {
         String xml = xstream.toXML(contacts);
         try (Writer writer = new FileWriter(file)){
             writer.write(xml);
+            writer.close();
         }
     }
 
     private void saveAsCSV(List<ContactData> contacts, File file) throws IOException {
-        System.out.print(new File(".").getAbsolutePath());
-        try (Writer writer = new FileWriter(file)) {
-            for (ContactData group : contacts) {
-                writer.write(String.format("%s;%s;%s\n", group.getFirstname(), group.getLastname(), group.getEmail()));
-            }
+           Writer writer = new FileWriter(file);
+           for (ContactData contact:contacts) {
+                 writer.write(String.format("%s;%s;%s;%s;%s;\n",
+                                  contact.getFirstname(), contact.getLastname(), contact.getEmail()));
         }
+           writer.close();
     }
 
     private List<ContactData> generateContacts(int count) {
